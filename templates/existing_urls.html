@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Available Urls</title>
+</head>
+<body>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">long_url</th>
+      <th scope="col">short_url</th>
+      <th scope="col">expiration_date</th>
+      <th scope="col">redirects</th>
+    </tr>
+  </thead>
+
+{% for url in all_urls|sort(attribute='id') %}
+      <tbody>
+        <tr>
+            <th scope="row">{{url.id}}</th>
+            <td><a href="{{url.long_url}}">{{url.long_url}}</a></td>
+            <td><a href="redirect/{{url.id}}/{{url.short_url}}">{{url.short_url}}</a></td>
+            <td>{{url.expiration_date}}</td>
+          <td>{{url.redirects}}</td>
+        </tr>
+    </tbody>
+{% endfor %}
+</table>
+</body>
+</html>
+{% endblock %}

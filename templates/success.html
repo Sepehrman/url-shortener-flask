@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+<!--{% block title %}shorten URL{% endblock %}-->
+
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <h3>Your TinyURL was created!</h3>
+
+    <div class="container p-3 my-3 border">
+
+      <h3>The following Original URL:</h3>
+        <h5><a href="{{long}}" target="_blank">{{long}}</a></h5>
+        <hr/>
+        <p>With a length of <b>{{long|length}}</b> and resulted in the following
+            TinyURL which has a length of <b>{{short|length}}</b> characters and will expire by <b>{{expiry}}</b></p>
+
+        <p>Was converted into:</p>
+        <a href="redirect/{{id}}/{{short}}"><b>{{short}}</b></a>
+
+    </div>
+
+    <div class="container p-3 my-3 border">
+      <h3>Preview of your TinyURL:</h3>
+        <h5>
+            {{short}}
+        </h5>
+
+        <hr/>
+
+        <h6>
+            [<a target="_blank" href="redirect/{{id}}/{{short}}">Open in new Window</a>]
+            [<a href="#" onclick="copyToClipboard()">Copy to clipboard</a>]
+        </h6>
+
+
+    </div>
+
+    <div class="ps-4">
+    </div>
+
+<input type="hidden" value="{{short}}" id="myInput">
+
+</body>
+</html>
+{% endblock %}

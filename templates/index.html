@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}shorten URL{% endblock %}
+
+{% block content %}
+<form action="/submit" method="post">
+
+    <div class="container p-3 my-3 border">
+
+    <div class="mb-3">
+        <h5>Enter a long URL to shorten</h5>
+
+        <input type="url" name="url" id="url"
+           placeholder="https://example.com"
+           pattern="https://.*"
+           required>
+    </div>
+
+    <div class="mb-3">
+    <h6>Enter an alias URL:</h6>
+        <input type="text" name="alias" id="alias">
+    </div>
+    <div class="mb-3">
+        <h6>Date to expire (Default: 1 day):</h6>
+            <input type="date" id="date" name="date"
+                value="{{date_today}}"
+                   min="{{date_today}}" max="2023-12-31">    </div>
+
+    <input type="submit" value="Make URL Shorter" class="btn btn-primary mt-3">
+    </div>
+</form>
+<br>
+
+</table>
+
+{% endblock %}
